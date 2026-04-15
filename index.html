@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ASL Connection — Certified ASL Interpreter Services</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231a6b6b'/%3E%3Crect x='9' y='13' width='14' height='13' rx='3' fill='%23e8d4a0'/%3E%3Crect x='9' y='9' width='3' height='7' rx='1.5' fill='%23e8d4a0'/%3E%3Crect x='13' y='8' width='3' height='7' rx='1.5' fill='%23e8d4a0'/%3E%3Crect x='17' y='8' width='3' height='7' rx='1.5' fill='%23e8d4a0'/%3E%3Crect x='21' y='9' width='2.5' height='6' rx='1.25' fill='%23e8d4a0'/%3E%3Crect x='5' y='16' width='5' height='3' rx='1.5' fill='%23e8d4a0'/%3E%3C/svg%3E">
+<style>
+:root {
+  --ink:#0d1117;--slate:#1e2530;--fog:#f5f4f0;--cream:#faf9f6;
+  --gold:#c8a45a;--gold-light:#e8d4a0;
+  --teal:#1a6b6b;--teal-mid:#2a8585;--teal-light:#e6f4f4;
+  --muted:#6b7280;--border:rgba(13,17,23,0.1);
+  --serif:'Playfair Display',Georgia,serif;
+  --sans:'DM Sans',system-ui,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--sans);background:var(--cream);color:var(--ink);line-height:1.6;overflow-x:hidden;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.25rem 4rem;background:rgba(250,249,246,0.93);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);}
+.nav-logo{font-family:var(--serif);font-size:1.3rem;font-weight:700;color:var(--ink);text-decoration:none;letter-spacing:-0.02em;display:flex;align-items:center;gap:0.5rem;}
+.nav-logo span{color:var(--teal);}
+.nav-mark{width:28px;height:28px;flex-shrink:0;}
+.nav-links{display:flex;align-items:center;gap:2rem;}
+.nav-links a{font-size:0.85rem;font-weight:500;color:var(--muted);text-decoration:none;transition:color .2s;}
+.nav-links a:hover{color:var(--ink);}
+.nav-cta{background:var(--teal)!important;color:white!important;padding:.55rem 1.25rem;border-radius:6px;font-weight:600!important;}
+.nav-cta:hover{background:var(--teal-mid)!important;}
+
+/* HERO */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;padding-top:80px;}
+.hero-left{display:flex;flex-direction:column;justify-content:center;padding:6rem 4rem;background:var(--ink);position:relative;overflow:hidden;}
+.hero-left::before{content:'';position:absolute;top:-100px;right:-100px;width:420px;height:420px;background:radial-gradient(circle,rgba(26,107,107,.28) 0%,transparent 70%);pointer-events:none;}
+.hero-left::after{content:'';position:absolute;bottom:-60px;left:30px;width:260px;height:260px;background:radial-gradient(circle,rgba(200,164,90,.14) 0%,transparent 70%);pointer-events:none;}
+.eyebrow{font-size:.73rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;display:flex;align-items:center;gap:.75rem;}
+.eyebrow::before{content:'';display:block;width:32px;height:1px;background:var(--gold);flex-shrink:0;}
+.hero-h1{font-family:var(--serif);font-size:clamp(2.6rem,4.2vw,3.8rem);font-weight:900;line-height:1.08;letter-spacing:-.03em;color:white;margin-bottom:1.75rem;}
+.hero-h1 em{font-style:normal;color:var(--gold);}
+.hero-sub{font-size:1rem;color:rgba(255,255,255,.62);max-width:420px;line-height:1.72;margin-bottom:2.5rem;}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn-p{display:inline-flex;align-items:center;gap:.4rem;background:var(--teal);color:white;font-family:var(--sans);font-size:.88rem;font-weight:600;padding:.82rem 1.65rem;border-radius:6px;text-decoration:none;transition:background .2s,transform .15s;}
+.btn-p:hover{background:var(--teal-mid);transform:translateY(-1px);}
+.btn-s{display:inline-flex;align-items:center;gap:.4rem;background:transparent;color:rgba(255,255,255,.72);font-family:var(--sans);font-size:.88rem;font-weight:500;padding:.82rem 1.65rem;border-radius:6px;border:1px solid rgba(255,255,255,.2);text-decoration:none;transition:border-color .2s,color .2s;}
+.btn-s:hover{border-color:rgba(255,255,255,.5);color:white;}
+.hero-stats{display:flex;gap:2.5rem;margin-top:3.5rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,.1);}
+.stat-n{font-family:var(--serif);font-size:2rem;font-weight:700;color:var(--gold);line-height:1;}
+.stat-l{font-size:.72rem;color:rgba(255,255,255,.42);margin-top:.3rem;letter-spacing:.06em;text-transform:uppercase;}
+
+/* Hero right */
+.hero-right{background:var(--fog);display:flex;flex-direction:column;justify-content:center;padding:5rem 3.5rem;position:relative;overflow:hidden;}
+.brand-watermark{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);opacity:.08;pointer-events:none;width:360px;height:360px;}
+.path-cards{display:flex;flex-direction:column;gap:1rem;position:relative;z-index:1;}
+.path-card{background:white;border-radius:12px;padding:1.65rem 1.85rem;border:1px solid var(--border);text-decoration:none;color:inherit;transition:border-color .2s,box-shadow .2s,transform .2s;display:block;}
+.path-card:hover{border-color:var(--teal);box-shadow:0 8px 30px rgba(26,107,107,.12);transform:translateX(4px);}
+.card-tag{font-size:.68rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);margin-bottom:.55rem;}
+.card-title{font-family:var(--serif);font-size:1.25rem;font-weight:700;color:var(--ink);margin-bottom:.35rem;}
+.card-desc{font-size:.855rem;color:var(--muted);line-height:1.52;}
+.card-arrow{display:inline-flex;align-items:center;margin-top:.8rem;font-size:.78rem;font-weight:600;color:var(--teal);}
+
+/* TRUST BAR */
+.trust-bar{background:var(--slate);padding:1.2rem 4rem;display:flex;align-items:center;justify-content:center;gap:2.75rem;flex-wrap:wrap;}
+.trust-item{font-size:.76rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.42);display:flex;align-items:center;gap:.5rem;}
+.trust-dot{width:5px;height:5px;border-radius:50%;background:var(--gold);flex-shrink:0;}
+
+/* SECTIONS */
+section{padding:6rem 4rem;}
+.sec-tag{font-size:.7rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--teal);margin-bottom:1rem;display:flex;align-items:center;gap:.6rem;}
+.sec-tag::before{content:'';display:block;width:22px;height:1px;background:var(--teal);flex-shrink:0;}
+.sec-h2{font-family:var(--serif);font-size:clamp(1.9rem,3.2vw,2.7rem);font-weight:700;letter-spacing:-.03em;line-height:1.15;color:var(--ink);margin-bottom:1.2rem;}
+.sec-lead{font-size:1rem;color:var(--muted);max-width:560px;line-height:1.7;}
+
+/* HOW */
+.how{background:var(--fog);}
+.how-inner{max-width:1100px;margin:0 auto;}
+.how-hd{max-width:540px;margin-bottom:2.75rem;}
+.how-tabs{display:flex;border-bottom:1px solid var(--border);margin-bottom:2.75rem;}
+.how-tab{padding:.7rem 1.6rem;font-size:.86rem;font-weight:500;color:var(--muted);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:color .2s,border-color .2s;background:none;border-top:none;border-left:none;border-right:none;font-family:var(--sans);}
+.how-tab.active{color:var(--teal);border-bottom-color:var(--teal);}
+.how-steps{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.75rem;}
+.how-step{background:white;border-radius:12px;padding:1.85rem;border:1px solid var(--border);}
+.step-n{font-family:var(--serif);font-size:2.8rem;font-weight:900;color:var(--teal-light);line-height:1;margin-bottom:.85rem;}
+.step-t{font-size:.95rem;font-weight:600;color:var(--ink);margin-bottom:.45rem;}
+.step-d{font-size:.855rem;color:var(--muted);line-height:1.6;}
+.how-panel{display:none;}
+.how-panel.active{display:block;}
+
+/* WHY */
+.why{background:var(--ink);}
+.why-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
+.why-t .sec-tag{color:var(--gold);}
+.why-t .sec-tag::before{background:var(--gold);}
+.why-t .sec-h2{color:white;}
+.why-t .sec-lead{color:rgba(255,255,255,.52);}
+.why-list{margin-top:2.25rem;display:flex;flex-direction:column;gap:1.15rem;}
+.why-item{display:flex;gap:.9rem;align-items:flex-start;}
+.why-chk{width:21px;height:21px;border-radius:50%;background:rgba(26,107,107,.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;color:var(--teal-mid);font-size:.72rem;font-weight:700;}
+.why-itx{font-size:.88rem;color:rgba(255,255,255,.68);line-height:1.52;}
+.why-itx strong{color:white;}
+.founder-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:2.35rem;}
+.fq{font-family:var(--serif);font-size:1.18rem;color:white;line-height:1.68;margin-bottom:1.85rem;position:relative;}
+.fq::before{content:'\201C';color:var(--gold);font-size:3rem;line-height:0;vertical-align:-.5em;margin-right:.08em;}
+.fq::after{content:'\201D';color:var(--gold);font-size:3rem;line-height:0;vertical-align:-.5em;margin-left:.08em;}
+.fbyline{display:flex;gap:.9rem;align-items:center;}
+.fphoto{width:52px;height:52px;border-radius:50%;border:2px solid var(--gold);overflow:hidden;flex-shrink:0;background:linear-gradient(135deg,var(--teal),var(--teal-mid));display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:.95rem;font-weight:700;color:white;}
+.fphoto img{width:100%;height:100%;object-fit:cover;}
+.fname{font-size:.88rem;font-weight:600;color:white;}
+.ftitle{font-size:.78rem;color:rgba(255,255,255,.42);margin-top:2px;}
+
+/* SERVICES */
+.svc-inner{max-width:1100px;margin:0 auto;}
+.svc-hd{max-width:540px;margin-bottom:3rem;}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;}
+.svc-card{background:white;border-radius:12px;padding:1.85rem;border:1px solid var(--border);transition:box-shadow .2s;}
+.svc-card:hover{box-shadow:0 8px 28px rgba(0,0,0,.07);}
+.svc-icon{width:42px;height:42px;background:var(--teal-light);border-radius:9px;display:flex;align-items:center;justify-content:center;margin-bottom:1.15rem;font-size:1.15rem;}
+.svc-name{font-size:.92rem;font-weight:600;color:var(--ink);margin-bottom:.45rem;}
+.svc-desc{font-size:.83rem;color:var(--muted);line-height:1.55;}
+
+/* TEAM */
+.team{background:var(--fog);}
+.team-inner{max-width:1100px;margin:0 auto;}
+.team-hd{max-width:540px;margin-bottom:3rem;}
+.team-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:1.4rem;}
+.team-card{background:white;border-radius:16px;padding:1.85rem;border:1px solid var(--border);text-align:center;}
+.tphoto{width:78px;height:78px;border-radius:50%;margin:0 auto 1.15rem;border:3px solid var(--teal-light);overflow:hidden;background:linear-gradient(135deg,var(--teal),var(--teal-mid));display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:1.35rem;font-weight:700;color:white;}
+.tphoto.gold{border-color:var(--gold);}
+.tphoto img{width:100%;height:100%;object-fit:cover;}
+.tname{font-size:.97rem;font-weight:600;color:var(--ink);margin-bottom:.18rem;}
+.trole{font-size:.72rem;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--teal);margin-bottom:.55rem;}
+.tbio{font-size:.8rem;color:var(--muted);line-height:1.55;}
+.tcerts{display:flex;flex-wrap:wrap;justify-content:center;gap:.35rem;margin-top:.75rem;}
+.cert{font-size:.68rem;font-weight:600;padding:2px 7px;border-radius:4px;background:var(--teal-light);color:var(--teal);}
+.join-tile{background:var(--ink);border-radius:16px;padding:1.85rem;border:1px solid rgba(255,255,255,.07);text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:270px;}
+.join-icon{width:72px;height:72px;border-radius:50%;border:2px dashed rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;margin:0 auto 1.1rem;font-size:1.6rem;color:rgba(255,255,255,.3);}
+.join-tt{font-family:var(--serif);font-size:1.05rem;color:white;margin-bottom:.4rem;}
+.join-ts{font-size:.8rem;color:rgba(255,255,255,.38);margin-bottom:1.1rem;line-height:1.5;}
+.join-btn{display:inline-block;padding:.55rem 1.1rem;background:var(--teal);color:white;border-radius:6px;font-size:.8rem;font-weight:600;text-decoration:none;transition:background .2s;}
+.join-btn:hover{background:var(--teal-mid);}
+
+/* REQUEST */
+.request{background:var(--teal-light);}
+.req-inner{max-width:700px;margin:0 auto;}
+.req-card{background:white;border-radius:18px;padding:3rem;border:1px solid var(--border);box-shadow:0 20px 55px rgba(26,107,107,.11);}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.15rem;}
+.fg{display:flex;flex-direction:column;gap:.38rem;}
+.fg.full{grid-column:1/-1;}
+label{font-size:.78rem;font-weight:600;color:var(--ink);letter-spacing:.02em;}
+input,select,textarea{font-family:var(--sans);font-size:.88rem;padding:.72rem .95rem;border:1px solid var(--border);border-radius:7px;background:var(--fog);color:var(--ink);outline:none;transition:border-color .2s;width:100%;}
+input:focus,select:focus,textarea:focus{border-color:var(--teal);background:white;}
+textarea{resize:vertical;min-height:90px;}
+.fsub{background:var(--teal);color:white;font-family:var(--sans);font-size:.92rem;font-weight:600;padding:.95rem 2rem;border-radius:7px;border:none;cursor:pointer;width:100%;margin-top:.4rem;transition:background .2s;}
+.fsub:hover{background:var(--teal-mid);}
+.fnote{font-size:.76rem;color:var(--muted);text-align:center;margin-top:.65rem;}
+.fnote a{color:var(--teal);}
+
+/* JOIN */
+.join-s{background:white;}
+.join-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
+.jlist{display:flex;flex-direction:column;gap:.8rem;margin-top:1.85rem;}
+.jitem{display:flex;gap:.7rem;align-items:flex-start;font-size:.87rem;color:var(--muted);line-height:1.5;}
+.jitem::before{content:'✓';color:var(--teal);font-weight:700;flex-shrink:0;margin-top:1px;}
+.jform{background:var(--fog);border-radius:14px;padding:2.25rem;border:1px solid var(--border);}
+.jform-t{font-family:var(--serif);font-size:1.35rem;font-weight:700;color:var(--ink);margin-bottom:.35rem;}
+.jform-s{font-size:.86rem;color:var(--muted);margin-bottom:1.75rem;}
+
+/* FOOTER */
+footer{background:var(--ink);padding:3.75rem 4rem 2.25rem;}
+.fi{max-width:1100px;margin:0 auto;}
+.ft{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2.75rem;padding-bottom:2.75rem;border-bottom:1px solid rgba(255,255,255,.07);}
+.flogo{font-family:var(--serif);font-size:1.25rem;font-weight:700;color:white;margin-bottom:.65rem;}
+.flogo span{color:var(--teal-mid);}
+.ftag{font-size:.83rem;color:rgba(255,255,255,.32);line-height:1.6;max-width:220px;margin-bottom:1.1rem;}
+.fcon{font-size:.8rem;color:rgba(255,255,255,.4);line-height:1.8;}
+.fcon a{color:rgba(255,255,255,.4);text-decoration:none;}
+.fct{font-size:.7rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.22);margin-bottom:1.1rem;}
+.flinks{display:flex;flex-direction:column;gap:.55rem;}
+.flinks a{font-size:.83rem;color:rgba(255,255,255,.42);text-decoration:none;transition:color .2s;}
+.flinks a:hover{color:white;}
+.fb{display:flex;justify-content:space-between;align-items:center;padding-top:1.85rem;flex-wrap:wrap;gap:1rem;}
+.fcopy{font-size:.76rem;color:rgba(255,255,255,.22);}
+.fein{font-size:.72rem;color:rgba(255,255,255,.16);}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+.eyebrow{animation:fadeUp .55s ease both;}
+.hero-h1{animation:fadeUp .55s .1s ease both;}
+.hero-sub{animation:fadeUp .55s .2s ease both;}
+.hero-actions{animation:fadeUp .55s .3s ease both;}
+.hero-stats{animation:fadeUp .55s .4s ease both;}
+.path-card:nth-child(1){animation:fadeUp .55s .1s ease both;}
+.path-card:nth-child(2){animation:fadeUp .55s .2s ease both;}
+.path-card:nth-child(3){animation:fadeUp .55s .3s ease both;}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  nav{padding:1rem 1.5rem;}
+  .nav-links{display:none;}
+  .hero{grid-template-columns:1fr;}
+  .hero-left{padding:3rem 1.5rem;min-height:55vh;}
+  .hero-right{padding:3rem 1.5rem;}
+  .why-inner,.join-inner{grid-template-columns:1fr;gap:2.5rem;}
+  .svc-grid{grid-template-columns:1fr 1fr;}
+  .how-steps{grid-template-columns:1fr;}
+  section{padding:4rem 1.5rem;}
+  .trust-bar{padding:1rem 1.5rem;gap:1.5rem;}
+  .ft{grid-template-columns:1fr 1fr;gap:2rem;}
+  .form-grid{grid-template-columns:1fr;}
+  .req-card{padding:1.75rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <svg class="nav-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="ASL handshape logo">
+      <rect x="13" y="19" width="19" height="17" rx="4" fill="#1a6b6b"/>
+      <rect x="13" y="11" width="4.5" height="11" rx="2.25" fill="#1a6b6b"/>
+      <rect x="19" y="9" width="4.5" height="13" rx="2.25" fill="#1a6b6b"/>
+      <rect x="25" y="9" width="4.5" height="13" rx="2.25" fill="#1a6b6b"/>
+      <rect x="31" y="11" width="3.5" height="10" rx="1.75" fill="#1a6b6b"/>
+      <rect x="6" y="23" width="8" height="4.5" rx="2.25" fill="#1a6b6b"/>
+      <circle cx="20.5" cy="30" r="2" fill="#c8a45a"/>
+    </svg>
+    ASL <span>Connection</span>
+  </a>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#how">How It Works</a>
+    <a href="#about">About</a>
+    <a href="#team">Our Team</a>
+    <a href="#join-s">Join Our Team</a>
+    <a href="#request" class="nav-cta">Request an Interpreter</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" style="padding:0;">
+  <div class="hero-left">
+    <div class="eyebrow">Washington State's ASL Agency</div>
+    <h1 class="hero-h1">Every voice<br><em>deserves</em><br>to be heard.</h1>
+    <p class="hero-sub">ASL Connection connects certified interpreters with the schools, hospitals, and organizations that need them — with the transparency, speed, and respect everyone deserves.</p>
+    <div class="hero-actions">
+      <a href="#request" class="btn-p">Request an Interpreter →</a>
+      <a href="#join-s" class="btn-s">Join Our Team</a>
+    </div>
+    <div class="hero-stats">
+      <div><div class="stat-n">20+</div><div class="stat-l">Years in the field</div></div>
+      <div><div class="stat-n">WA</div><div class="stat-l">State licensed</div></div>
+      <div><div class="stat-n">ASL</div><div class="stat-l">Specialist agency</div></div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <!-- Semi-transparent ASL "A" brand mark watermark -->
+    <svg class="brand-watermark" viewBox="0 0 200 220" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <!-- Stylized open hand / ASL letterform -->
+      <!-- Palm -->
+      <rect x="50" y="95" width="100" height="105" rx="22" fill="#0d1117"/>
+      <!-- Index -->
+      <rect x="50" y="30" width="22" height="72" rx="11" fill="#0d1117"/>
+      <!-- Middle -->
+      <rect x="79" y="18" width="22" height="84" rx="11" fill="#0d1117"/>
+      <!-- Ring -->
+      <rect x="108" y="18" width="22" height="84" rx="11" fill="#0d1117"/>
+      <!-- Pinky -->
+      <rect x="137" y="30" width="18" height="70" rx="9" fill="#0d1117"/>
+      <!-- Thumb -->
+      <rect x="14" y="112" width="42" height="20" rx="10" fill="#0d1117"/>
+      <!-- Gold knuckle accent bar -->
+      <rect x="50" y="95" width="100" height="6" rx="3" fill="#c8a45a"/>
+    </svg>
+
+    <div class="path-cards">
+      <a href="#request" class="path-card">
+        <div class="card-tag">For organizations</div>
+        <div class="card-title">Request an interpreter</div>
+        <div class="card-desc">Schools, hospitals, legal settings, community events — we match you with the right certified interpreter for every assignment.</div>
+        <div class="card-arrow">Get started →</div>
+      </a>
+      <a href="#join-s" class="path-card">
+        <div class="card-tag">For interpreters</div>
+        <div class="card-title">Join our network</div>
+        <div class="card-desc">Fair pay, transparent scheduling, and a team that actually respects what you do. Apply to join ASL Connection's interpreter roster.</div>
+        <div class="card-arrow">Apply now →</div>
+      </a>
+      <a href="tel:3607979242" class="path-card">
+        <div class="card-tag">Need it urgently?</div>
+        <div class="card-title">Call or text us</div>
+        <div class="card-desc">Call or text for same-day or emergency interpreting needs. We'll respond as quickly as possible.</div>
+        <div class="card-arrow">(360) 797-9242 →</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-item"><span class="trust-dot"></span>CODA-founded agency</div>
+  <div class="trust-item"><span class="trust-dot"></span>RID &amp; NIC certified interpreters</div>
+  <div class="trust-item"><span class="trust-dot"></span>HIPAA compliant</div>
+  <div class="trust-item"><span class="trust-dot"></span>WA state licensed LLC</div>
+  <div class="trust-item"><span class="trust-dot"></span>K–12 · Medical · Legal · Community</div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+  <div class="how-inner">
+    <div class="how-hd">
+      <div class="sec-tag">How it works</div>
+      <h2 class="sec-h2">Simple for everyone involved.</h2>
+      <p class="sec-lead">Whether you're requesting services or joining our team, we built this for clarity — not confusion.</p>
+    </div>
+    <div class="how-tabs">
+      <button class="how-tab active" onclick="showPanel('client',this)">For organizations</button>
+      <button class="how-tab" onclick="showPanel('lap',this)">For interpreters</button>
+    </div>
+    <div id="panel-client" class="how-panel active">
+      <div class="how-steps">
+        <div class="how-step"><div class="step-n">01</div><div class="step-t">Submit a request</div><div class="step-d">Fill out our online form — date, time, location, setting type, and communication preferences (ASL, PSE, SEE, Tactile, and more).</div></div>
+        <div class="how-step"><div class="step-n">02</div><div class="step-t">We match &amp; confirm</div><div class="step-d">Our team matches your request with the most qualified available interpreter for your setting. You receive a confirmation with credentials.</div></div>
+        <div class="how-step"><div class="step-n">03</div><div class="step-t">Access &amp; invoicing</div><div class="step-d">Your interpreter arrives prepared and professional. Invoicing is transparent and itemized — you always know what you're paying for.</div></div>
+      </div>
+    </div>
+    <div id="panel-lap" class="how-panel">
+      <div class="how-steps">
+        <div class="how-step"><div class="step-n">01</div><div class="step-t">Apply &amp; onboard</div><div class="step-d">Submit your profile, credentials, and compliance documents. Our streamlined onboarding gets you on the roster quickly — no bureaucratic black holes.</div></div>
+        <div class="how-step"><div class="step-n">02</div><div class="step-t">Accept assignments</div><div class="step-d">View available assignments that match your qualifications and availability. Accept, decline, or express interest — with full assignment details always visible.</div></div>
+        <div class="how-step"><div class="step-n">03</div><div class="step-t">Invoice &amp; get paid</div><div class="step-d">Submit invoices directly after each assignment. Fair, consistent pay with transparent rates — no surprises, no chasing down payments.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="why" id="about">
+  <div class="why-inner">
+    <div class="why-t">
+      <div class="sec-tag">Why ASL Connection</div>
+      <h2 class="sec-h2" style="color:white;">Built from the inside out.</h2>
+      <p class="sec-lead">Most interpreter agencies are run by administrators. We're run by someone who grew up in Deaf culture, spent 20+ years as a working interpreter, and served our country in between.</p>
+      <div class="why-list">
+        <div class="why-item"><div class="why-chk">✓</div><div class="why-itx"><strong>ASL-only focus.</strong> We don't try to do everything. We do ASL interpreting exceptionally well.</div></div>
+        <div class="why-item"><div class="why-chk">✓</div><div class="why-itx"><strong>Interpreters are partners, not vendors.</strong> Respect, fair pay, and clear communication — always.</div></div>
+        <div class="why-item"><div class="why-chk">✓</div><div class="why-itx"><strong>Compliance built in.</strong> WA state requirements, HIPAA, educational settings — we know what's required and track it.</div></div>
+        <div class="why-item"><div class="why-chk">✓</div><div class="why-itx"><strong>Deaf-culture aware.</strong> We understand community dynamics, preferred communication modes, and why this work matters.</div></div>
+      </div>
+    </div>
+    <div class="founder-card">
+      <div class="fq">I founded ASL Connection because the Deaf community deserves more than a scheduling spreadsheet. They deserve an agency that understands their world — because it's my world too.</div>
+      <div class="fbyline">
+        <div class="fphoto">
+          <img src="simon-peters.jpg" alt="Simon Peters">
+        </div>
+        <div>
+          <div class="fname">Simon Peters</div>
+          <div class="ftitle">Founder &amp; Owner — CODA, Veteran, 20+ yr Interpreter</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="svc-inner">
+    <div class="svc-hd">
+      <div class="sec-tag">Services</div>
+      <h2 class="sec-h2">Every setting, covered.</h2>
+      <p class="sec-lead">From elementary school IEPs to surgical suites, we place qualified interpreters across the full spectrum of assignments.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc-card"><div class="svc-icon">🎓</div><div class="svc-name">K–12 Educational</div><div class="svc-desc">Classroom, IEP meetings, extracurriculars, and school events. Compliant with OSPI and district fingerprinting requirements.</div></div>
+      <div class="svc-card"><div class="svc-icon">🏥</div><div class="svc-name">Medical &amp; Healthcare</div><div class="svc-desc">Appointments, procedures, mental health, and hospital stays. HIPAA-compliant interpreters with appropriate immunization documentation.</div></div>
+      <div class="svc-card"><div class="svc-icon">⚖️</div><div class="svc-name">Legal Settings</div><div class="svc-desc">Depositions, hearings, consultations, and courtroom proceedings. Certified interpreters experienced in legal terminology.</div></div>
+      <div class="svc-card"><div class="svc-icon">🏛️</div><div class="svc-name">Postsecondary</div><div class="svc-desc">University lectures, advising, campus events, and disability services programs at colleges and universities.</div></div>
+      <div class="svc-card"><div class="svc-icon">🤝</div><div class="svc-name">Business &amp; Corporate</div><div class="svc-desc">Meetings, trainings, conferences, and HR processes. Professional interpreters who understand business environments.</div></div>
+      <div class="svc-card"><div class="svc-icon">🌍</div><div class="svc-name">Community &amp; Events</div><div class="svc-desc">Religious services, community events, theatrical performances, and platform interpreting. All communication modes available.</div></div>
+    </div>
+    <p style="margin-top:1.5rem;font-size:.83rem;color:var(--muted);">Available modes: ASL · PSE · SEE · Tactile · Pro-Tactile · Oral · Sign-to-Voice · CDI · Trilingual</p>
+  </div>
+</section>
+
+<!-- MEET THE TEAM -->
+<section class="team" id="team">
+  <div class="team-inner">
+    <div class="team-hd">
+      <div class="sec-tag">Meet the team</div>
+      <h2 class="sec-h2">People you can trust.</h2>
+      <p class="sec-lead">Our interpreters choose to be listed here because they're proud of what they do. Every profile is verified and opt-in.</p>
+    </div>
+    <div class="team-grid">
+      <!-- Founder -->
+      <div class="team-card">
+        <div class="tphoto gold"><img src="simon-peters.jpg" alt="Simon Peters"></div>
+        <div class="tname">Simon Peters</div>
+        <div class="trole">Founder &amp; Owner</div>
+        <div class="tbio">CODA, U.S. veteran, and interpreter with 20+ years of experience. Founded ASL Connection to build the agency he always wished existed.</div>
+        <div class="tcerts"><span class="cert">CODA</span><span class="cert">20+ yrs</span><span class="cert">Veteran</span></div>
+      </div>
+      <!-- Placeholder -->
+      <div class="team-card" style="opacity:.38;">
+        <div class="tphoto">?</div>
+        <div class="tname">Your name here</div>
+        <div class="trole">Interpreter</div>
+        <div class="tbio">Join ASL Connection and opt in to be featured on our website as a verified member of our interpreter network.</div>
+        <div class="tcerts"><span class="cert">NIC</span><span class="cert">K–12</span></div>
+      </div>
+      <!-- Join tile -->
+      <div class="join-tile">
+        <div class="join-icon">+</div>
+        <div class="join-tt">Join our team</div>
+        <div class="join-ts">Apply to become part of ASL Connection. During onboarding you can opt in to be featured here with your photo, certifications, and bio.</div>
+        <a href="#join-s" class="join-btn">Apply now →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REQUEST FORM -->
+<section class="request" id="request">
+  <div class="req-inner">
+    <div style="text-align:center;margin-bottom:2.25rem;">
+      <div class="sec-tag" style="justify-content:center;">Request interpreting services</div>
+      <h2 class="sec-h2" style="text-align:center;">Let's get you covered.</h2>
+      <p class="sec-lead" style="margin:0 auto;text-align:center;">Fill out the form and we'll confirm availability within one business day. For urgent needs, email us directly.</p>
+    </div>
+    <div class="req-card">
+      <div class="form-grid">
+        <div class="fg"><label>Your name</label><input type="text" placeholder="Contact person"></div>
+        <div class="fg"><label>Organization / School / Dept.</label><input type="text" placeholder="Organization name"></div>
+        <div class="fg"><label>Email address</label><input type="email" placeholder="you@organization.org"></div>
+        <div class="fg"><label>Consumer / Client name</label><input type="text" placeholder="Name of the Deaf individual"></div>
+        <div class="fg"><label>Assignment date</label><input type="date"></div>
+        <div class="fg"><label>Start time</label><input type="time"></div>
+        <div class="fg"><label>End time</label><input type="time"></div>
+        <div class="fg"><label>Assignment type</label>
+          <select><option value="">Select setting...</option><option>K–12 Classroom</option><option>IEP / School Meeting</option><option>Medical Appointment</option><option>Legal / Court</option><option>Business / Corporate</option><option>Postsecondary</option><option>Mental Health</option><option>Community / Event</option><option>Other</option></select>
+        </div>
+        <div class="fg"><label>Communication mode</label>
+          <select><option value="">Select mode...</option><option>ASL</option><option>PSE (Pidgin Signed English)</option><option>SEE (Signed Exact English)</option><option>Tactile / Pro-Tactile</option><option>CDI (Certified Deaf Interpreter)</option><option>Oral</option><option>Not sure — please advise</option></select>
+        </div>
+        <div class="fg full"><label>Assignment location (full address)</label><input type="text" placeholder="Street address, city, state, zip"></div>
+        <div class="fg full"><label>Additional notes / special considerations</label><textarea placeholder="Preferred interpreter, DeafBlind needs, parking info, anything else we should know..."></textarea></div>
+      </div>
+      <button class="fsub" type="button">Submit request →</button>
+      <p class="fnote">We'll respond within one business day. For urgent needs call <a href="tel:3607979242">(360) 797-9242</a> or email <a href="mailto:info@aslconnection.com">info@aslconnection.com</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- JOIN AS INTERPRETER -->
+<section class="join-s" id="join-s">
+  <div class="join-inner">
+    <div>
+      <div class="sec-tag">For interpreters</div>
+      <h2 class="sec-h2">Work with an agency that works for you.</h2>
+      <p class="sec-lead">We're building a team of exceptional interpreters — including CDIs — who want more than just a job board. They want a community.</p>
+      <div class="jlist">
+        <div class="jitem">Fair, consistent hourly rates — no surprises</div>
+        <div class="jitem">Full assignment details before you accept</div>
+        <div class="jitem">Compliance tracking so you never miss a renewal</div>
+        <div class="jitem">Fast, accurate invoicing and payment</div>
+        <div class="jitem">Leadership that respects your expertise</div>
+        <div class="jitem">Optional profile listing on our website</div>
+        <div class="jitem">A community, not just a client list</div>
+      </div>
+    </div>
+    <div class="jform">
+      <div class="jform-t">Express interest</div>
+      <div class="jform-s">Tell us a little about yourself and we'll send you the full application packet.</div>
+      <div style="display:flex;flex-direction:column;gap:.9rem;">
+        <div class="fg"><label>Full name</label><input type="text" placeholder="Your name"></div>
+        <div class="fg"><label>Email</label><input type="email" placeholder="your@email.com"></div>
+        <div class="fg"><label>Primary certification(s)</label>
+          <select><option value="">Select...</option><option>NIC (National Interpreter Certification)</option><option>EIPA (Educational Interpreter)</option><option>CDI (Certified Deaf Interpreter)</option><option>BEI (Board for Evaluation)</option><option>No certification yet</option><option>Other / Multiple</option></select>
+        </div>
+        <div class="fg"><label>Years of experience</label>
+          <select><option value="">Select...</option><option>0–2 years</option><option>3–5 years</option><option>6–10 years</option><option>10+ years</option></select>
+        </div>
+        <button class="fsub" type="button">Send my interest →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="fi">
+    <div class="ft">
+      <div>
+        <div class="flogo">ASL <span>Connection</span> LLC</div>
+        <div class="ftag">Washington's ASL-specialist interpreter agency — built by the community, for the community.</div>
+        <div class="fcon">Puyallup, WA<br><a href="tel:3607979242">(360) 797-9242</a><br><a href="mailto:info@aslconnection.com">info@aslconnection.com</a></div>
+      </div>
+      <div>
+        <div class="fct">Services</div>
+        <div class="flinks"><a href="#services">K–12 Educational</a><a href="#services">Medical</a><a href="#services">Legal</a><a href="#services">Postsecondary</a><a href="#services">Business</a><a href="#services">Community</a></div>
+      </div>
+      <div>
+        <div class="fct">For interpreters</div>
+        <div class="flinks"><a href="#join-s">Join the network</a><a href="#team">Meet the team</a><a href="#join-s">Requirements</a><a href="#join-s">Rates &amp; invoicing</a></div>
+      </div>
+      <div>
+        <div class="fct">Company</div>
+        <div class="flinks"><a href="#about">About Simon</a><a href="#request">Request service</a><a href="mailto:info@aslconnection.com">Contact us</a></div>
+      </div>
+    </div>
+    <div class="fb">
+      <div class="fcopy">© 2026 ASL Connection LLC. All rights reserved.</div>
+      <div class="fein">EIN: 42-1926665 · WA State LLC · est. 04/15/2026</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+function showPanel(type, btn) {
+  document.querySelectorAll('.how-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.how-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('panel-' + type).classList.add('active');
+  btn.classList.add('active');
+}
+</script>
+</body>
+</html>
