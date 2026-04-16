@@ -1419,15 +1419,16 @@ function closeSidebar() {
   document.getElementById('sidebar-overlay').classList.remove('open');
 }
 
-// Close sidebar when nav item clicked on mobile
-document.querySelectorAll('.nav-item').forEach(item => {
-  item.addEventListener('click', () => {
-    if (window.innerWidth <= 768) closeSidebar();
-  });
-});
-
 // ── START ──
-init();
+document.addEventListener('DOMContentLoaded', () => {
+  // Close sidebar when nav item clicked on mobile
+  document.querySelectorAll('.nav-item').forEach(item => {
+    item.addEventListener('click', () => {
+      if (window.innerWidth <= 768) closeSidebar();
+    });
+  });
+  init();
+});
 </script>
 </body>
 </html>
