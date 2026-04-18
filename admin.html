@@ -2250,10 +2250,12 @@ function renderAgencySettings() {
     badge.style.color = 'rgba(0,196,160,0.95)';
     current.style.display = 'block';
     capture.style.display = 'none';
-    // Load image
-    const { data } = db.storage.from('interpreter-contracts').getPublicUrl(agencySettings.owner_signature_path);
-    const img = document.getElementById('sig-template-img');
-    img.src = data.publicUrl + '?v=' + Date.now();
+    // Private bucket — need signed URL to display the thumbnail
+    db.storage.from('interpreter-contracts').createSignedUrl(agencySettings.owner_signature_path, 300).then(({data, error}) => {
+      if (error) { console.warn('Could not create signed URL for owner sig:', error); return; }
+      const img = document.getElementById('sig-template-img');
+      img.src = data.signedUrl + '&v=' + Date.now();
+    });
     if (agencySettings.owner_signature_captured_at) {
       document.getElementById('sig-template-date').textContent = new Date(agencySettings.owner_signature_captured_at).toLocaleDateString('en-US', { month:'long', day:'numeric', year:'numeric' });
     }
@@ -2352,12 +2354,15 @@ async function saveOwnerSignature() {
     const path = `agency/owner_signature_${Date.now()}.png`;
     const { error: upErr } = await db.storage.from('interpreter-contracts').upload(path, blob, { contentType: 'image/png', upsert: false });
     if (upErr) throw new Error('Upload failed: ' + upErr.message);
-    const { error: dbErr } = await db.from('agency_settings').update({
+    const { data: updRows, error: dbErr } = await db.from('agency_settings').update({
       owner_signature_path: path,
       owner_signature_captured_at: new Date().toISOString(),
       updated_at: new Date().toISOString()
-    }).eq('id', 1);
+    }).eq('id', 1).select();
     if (dbErr) throw new Error('Save failed: ' + dbErr.message);
+    if (!updRows || updRows.length === 0) {
+      throw new Error('Save returned no rows — row-level security may be blocking the update. Please report this.');
+    }
     toast('✓ Signature template saved');
     await loadAgencySettings();
   } catch (err) {
