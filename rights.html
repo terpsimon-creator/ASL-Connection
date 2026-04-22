@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Communication Access Rights — ASL Connection</title>
+<meta name="description" content="Understand your rights and responsibilities around ASL interpreting. Guidance for Deaf and Hard of Hearing individuals, organizations, employers, and interpreters.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230a2540'/%3E%3Ctext x='16' y='23' font-size='20' text-anchor='middle'%3E%F0%9F%A4%9D%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:#0d1117;--slate:#1e2530;--fog:#f5f4f0;--cream:#faf9f6;
+  --gold:#c8a45a;--gold-light:#f5ead0;
+  --teal:#1a6b6b;--teal-mid:#2a8585;--teal-light:#e6f4f4;--teal-dark:#124f4f;
+  --muted:#6b7280;--border:rgba(13,17,23,0.1);
+  --serif:'Playfair Display',Georgia,serif;
+  --sans:'DM Sans',system-ui,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--sans);background:var(--cream);color:var(--ink);line-height:1.65;overflow-x:hidden;}
+
+/* ── NAV ── */
+nav{position:sticky;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.25rem 4rem;background:rgba(250,249,246,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);}
+.nav-logo{font-family:var(--serif);font-size:1.3rem;font-weight:700;color:var(--ink);text-decoration:none;letter-spacing:-0.02em;display:flex;align-items:center;gap:0.5rem;}
+.nav-logo span{color:var(--teal);}
+.nav-back{font-size:.85rem;color:var(--teal);text-decoration:none;font-weight:500;transition:opacity .2s;}
+.nav-back:hover{opacity:.7;}
+
+/* ── HERO ── */
+.hero{background:var(--ink);padding:5rem 4rem 4rem;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;top:-60px;right:-60px;width:400px;height:400px;background:radial-gradient(circle,rgba(26,107,107,.25) 0%,transparent 70%);pointer-events:none;}
+.hero::after{content:'';position:absolute;bottom:-80px;left:10%;width:300px;height:300px;background:radial-gradient(circle,rgba(200,164,90,.1) 0%,transparent 70%);pointer-events:none;}
+.hero-inner{max-width:760px;position:relative;z-index:1;}
+.hero-eyebrow{font-size:.72rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:1.25rem;opacity:0;animation:fadeUp .5s .1s ease forwards;}
+.hero h1{font-family:var(--serif);font-size:3.2rem;font-weight:900;color:white;line-height:1.1;margin-bottom:1.25rem;opacity:0;animation:fadeUp .5s .2s ease forwards;}
+.hero h1 em{color:var(--gold);font-style:italic;}
+.hero-sub{font-size:1.05rem;color:rgba(255,255,255,.55);max-width:580px;line-height:1.7;opacity:0;animation:fadeUp .5s .3s ease forwards;}
+.hero-disclaimer{margin-top:2rem;padding:.85rem 1.25rem;background:rgba(200,164,90,.1);border:1px solid rgba(200,164,90,.25);border-radius:8px;font-size:.8rem;color:rgba(255,255,255,.45);line-height:1.5;max-width:620px;opacity:0;animation:fadeUp .5s .4s ease forwards;}
+.hero-disclaimer strong{color:rgba(200,164,90,.8);}
+
+/* ── AUDIENCE TOGGLE ── */
+.audience-bar{background:white;border-bottom:2px solid var(--border);position:sticky;top:73px;z-index:90;}
+.audience-inner{max-width:1100px;margin:0 auto;padding:0 4rem;display:flex;gap:0;}
+.aud-tab{padding:1.1rem 2rem;font-size:.88rem;font-weight:600;color:var(--muted);text-decoration:none;border-bottom:3px solid transparent;margin-bottom:-2px;transition:all .2s;cursor:pointer;background:none;border-top:none;border-left:none;border-right:none;font-family:var(--sans);white-space:nowrap;}
+.aud-tab:hover{color:var(--ink);}
+.aud-tab.active{color:var(--teal);border-bottom-color:var(--teal);}
+.aud-tab .tab-icon{margin-right:.45rem;}
+
+/* ── LAYOUT ── */
+.main{max-width:1100px;margin:0 auto;padding:3.5rem 4rem 6rem;}
+.lane{display:none;}
+.lane.active{display:block;}
+
+/* ── SECTION HEADERS ── */
+.section-label{font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.75rem;}
+.section-title{font-family:var(--serif);font-size:2rem;font-weight:700;color:var(--ink);margin-bottom:.65rem;line-height:1.2;}
+.section-sub{font-size:.98rem;color:var(--muted);max-width:600px;line-height:1.65;margin-bottom:2.5rem;}
+
+/* ── CONTENT BLOCKS ── */
+.content-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-bottom:2.5rem;}
+.info-card{background:white;border:1px solid var(--border);border-radius:12px;padding:1.5rem;}
+.info-card-icon{font-size:1.6rem;margin-bottom:.75rem;}
+.info-card h3{font-size:.95rem;font-weight:700;color:var(--ink);margin-bottom:.5rem;}
+.info-card p{font-size:.88rem;color:var(--muted);line-height:1.6;}
+.info-card .law-tag{display:inline-block;font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:var(--teal-light);color:var(--teal);padding:.2rem .6rem;border-radius:20px;margin-bottom:.65rem;}
+
+/* ── COMPARISON TABLE ── */
+.compare-wrap{margin-bottom:2.5rem;overflow-x:auto;}
+.compare-table{width:100%;border-collapse:collapse;background:white;border-radius:12px;overflow:hidden;border:1px solid var(--border);}
+.compare-table thead tr{background:var(--ink);}
+.compare-table thead th{padding:1rem 1.25rem;font-size:.8rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;text-align:left;}
+.compare-table thead th:first-child{color:var(--gold);}
+.compare-table thead th:last-child{color:rgba(255,255,255,.45);}
+.compare-table tbody tr{border-bottom:1px solid var(--border);}
+.compare-table tbody tr:last-child{border-bottom:none;}
+.compare-table tbody td{padding:.9rem 1.25rem;font-size:.88rem;vertical-align:top;}
+.compare-table tbody td:first-child{color:var(--ink);font-weight:500;}
+.compare-table tbody td:last-child{color:var(--muted);}
+.check{color:var(--teal);margin-right:.4rem;}
+.x{color:#dc2626;margin-right:.4rem;}
+
+/* ── HIGHLIGHT BOXES ── */
+.highlight-box{background:var(--teal-light);border-left:4px solid var(--teal);padding:1.25rem 1.5rem;border-radius:0 10px 10px 0;margin-bottom:1.5rem;}
+.highlight-box p{font-size:.92rem;color:var(--teal-dark);line-height:1.65;}
+.highlight-box strong{color:var(--teal-dark);}
+
+.gold-box{background:var(--gold-light);border-left:4px solid var(--gold);padding:1.25rem 1.5rem;border-radius:0 10px 10px 0;margin-bottom:1.5rem;}
+.gold-box p{font-size:.92rem;color:#5c3d00;line-height:1.65;}
+.gold-box strong{color:#5c3d00;}
+
+/* ── FAQ ── */
+.faq-wrap{margin-bottom:2.5rem;}
+.faq-item{border:1px solid var(--border);border-radius:10px;margin-bottom:.65rem;background:white;overflow:hidden;}
+.faq-q{width:100%;display:flex;align-items:center;justify-content:space-between;padding:1rem 1.25rem;background:none;border:none;font-family:var(--sans);font-size:.92rem;font-weight:600;color:var(--ink);cursor:pointer;text-align:left;gap:1rem;}
+.faq-q:hover{background:var(--fog);}
+.faq-chevron{flex-shrink:0;transition:transform .25s;font-style:normal;color:var(--teal);font-size:1rem;}
+.faq-item.open .faq-chevron{transform:rotate(180deg);}
+.faq-a{display:none;padding:0 1.25rem 1.1rem;font-size:.88rem;color:var(--muted);line-height:1.7;}
+.faq-item.open .faq-a{display:block;}
+
+/* ── SETTING CARDS ── */
+.setting-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:2.5rem;}
+.setting-card{background:white;border:1px solid var(--border);border-radius:12px;padding:1.35rem;}
+.setting-card .s-icon{font-size:1.4rem;margin-bottom:.6rem;}
+.setting-card h4{font-size:.9rem;font-weight:700;color:var(--ink);margin-bottom:.4rem;}
+.setting-card p{font-size:.82rem;color:var(--muted);line-height:1.6;}
+
+/* ── POLICY ITEMS ── */
+.policy-list{list-style:none;margin-bottom:2.5rem;}
+.policy-list li{display:flex;gap:1rem;padding:.9rem 0;border-bottom:1px solid var(--border);}
+.policy-list li:last-child{border-bottom:none;}
+.policy-icon{width:32px;height:32px;background:var(--teal-light);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0;margin-top:.1rem;}
+.policy-text h4{font-size:.9rem;font-weight:600;color:var(--ink);margin-bottom:.25rem;}
+.policy-text p{font-size:.84rem;color:var(--muted);line-height:1.55;}
+
+/* ── CTA BLOCK ── */
+.cta-block{background:var(--ink);border-radius:16px;padding:2.5rem 2.75rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;margin-top:3rem;}
+.cta-text h3{font-family:var(--serif);font-size:1.55rem;font-weight:700;color:white;margin-bottom:.5rem;}
+.cta-text p{font-size:.9rem;color:rgba(255,255,255,.45);line-height:1.6;max-width:480px;}
+.cta-btn{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 1.75rem;background:var(--teal);color:white;text-decoration:none;border-radius:8px;font-size:.9rem;font-weight:600;white-space:nowrap;transition:background .2s,transform .15s;}
+.cta-btn:hover{background:var(--teal-mid);transform:translateY(-1px);}
+.cta-btn-ghost{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 1.75rem;background:transparent;color:rgba(255,255,255,.65);text-decoration:none;border-radius:8px;font-size:.9rem;font-weight:500;border:1px solid rgba(255,255,255,.15);white-space:nowrap;transition:all .2s;}
+.cta-btn-ghost:hover{color:white;border-color:rgba(255,255,255,.4);}
+.cta-actions{display:flex;gap:.75rem;flex-shrink:0;flex-wrap:wrap;}
+
+/* ── AI Q&A ── */
+.qa-section{margin-bottom:3rem;}
+.qa-label{font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.75rem;}
+.qa-title{font-family:var(--serif);font-size:1.6rem;font-weight:700;color:var(--ink);margin-bottom:.5rem;}
+.qa-sub{font-size:.9rem;color:var(--muted);margin-bottom:1.5rem;}
+.qa-box{background:white;border:1px solid var(--border);border-radius:14px;overflow:hidden;}
+.qa-seeds{padding:1rem 1.25rem;border-bottom:1px solid var(--border);display:flex;flex-wrap:wrap;gap:.5rem;}
+.seed-btn{padding:.4rem .9rem;border:1px solid var(--border);border-radius:20px;font-size:.78rem;color:var(--muted);background:none;cursor:pointer;font-family:var(--sans);transition:all .2s;}
+.seed-btn:hover{border-color:var(--teal);color:var(--teal);background:var(--teal-light);}
+.qa-input-row{display:flex;gap:.75rem;padding:1rem 1.25rem;}
+.qa-input{flex:1;padding:.75rem 1rem;border:1px solid var(--border);border-radius:8px;font-size:.9rem;font-family:var(--sans);color:var(--ink);outline:none;transition:border-color .2s;resize:none;}
+.qa-input:focus{border-color:var(--teal);}
+.qa-send{padding:.75rem 1.25rem;background:var(--teal);color:white;border:none;border-radius:8px;font-size:.88rem;font-weight:600;cursor:pointer;font-family:var(--sans);transition:background .2s;white-space:nowrap;}
+.qa-send:hover{background:var(--teal-mid);}
+.qa-send:disabled{background:var(--muted);cursor:not-allowed;}
+.qa-response{display:none;padding:1.25rem;border-top:1px solid var(--border);background:var(--fog);}
+.qa-response.visible{display:block;}
+.qa-response-label{font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);margin-bottom:.65rem;}
+.qa-response-text{font-size:.9rem;color:var(--ink);line-height:1.7;}
+.qa-response-disclaimer{margin-top:.9rem;padding:.75rem 1rem;background:var(--gold-light);border-radius:6px;font-size:.76rem;color:#5c3d00;line-height:1.5;}
+.qa-loading{display:none;padding:1.25rem;border-top:1px solid var(--border);color:var(--muted);font-size:.88rem;align-items:center;gap:.65rem;}
+.qa-loading.visible{display:flex;}
+.qa-spinner{width:16px;height:16px;border:2px solid var(--border);border-top-color:var(--teal);border-radius:50%;animation:spin .7s linear infinite;flex-shrink:0;}
+
+/* ── DIVIDER ── */
+.section-divider{height:1px;background:var(--border);margin:3rem 0;}
+
+/* ── FOOTER ── */
+footer{background:var(--ink);padding:2.5rem 4rem;text-align:center;}
+footer p{font-size:.8rem;color:rgba(255,255,255,.28);}
+footer a{color:rgba(255,255,255,.38);text-decoration:none;}
+footer a:hover{color:rgba(255,255,255,.7);}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+@keyframes spin{to{transform:rotate(360deg);}}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  nav{padding:1rem 1.5rem;}
+  .hero{padding:3.5rem 1.5rem 3rem;}
+  .hero h1{font-size:2.2rem;}
+  .audience-inner{padding:0 1.5rem;overflow-x:auto;}
+  .aud-tab{padding:.9rem 1.25rem;font-size:.82rem;}
+  .main{padding:2.5rem 1.5rem 5rem;}
+  .content-grid{grid-template-columns:1fr;}
+  .setting-grid{grid-template-columns:1fr 1fr;}
+  .cta-block{flex-direction:column;align-items:flex-start;padding:2rem;}
+  .cta-actions{flex-direction:column;width:100%;}
+  .cta-btn,.cta-btn-ghost{text-align:center;justify-content:center;}
+}
+@media(max-width:580px){
+  .setting-grid{grid-template-columns:1fr;}
+  .hero h1{font-size:1.9rem;}
+  .section-title{font-size:1.6rem;}
+  footer{padding:1.5rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">🤝 ASL <span>Connection</span></a>
+  <a href="index.html" class="nav-back">← Back to home</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Communication Access</div>
+    <h1>Know Your Role.<br><em>Protect the Access.</em></h1>
+    <p class="hero-sub">Communication access works best when everyone understands their rights and responsibilities. Whether you're Deaf, an organization, or an interpreter — this is your guide.</p>
+    <div class="hero-disclaimer"><strong>⚠️ Educational information only.</strong> This page reflects U.S. federal law and Washington State law as of 2026. It is not legal advice. For specific legal concerns, consult a qualified disability rights attorney.</div>
+  </div>
+</div>
+
+<!-- AUDIENCE TOGGLE -->
+<div class="audience-bar">
+  <div class="audience-inner">
+    <button class="aud-tab active" onclick="switchLane('deaf', this)"><span class="tab-icon">👋</span>Deaf & Hard of Hearing</button>
+    <button class="aud-tab" onclick="switchLane('orgs', this)"><span class="tab-icon">🏢</span>Organizations & Employers</button>
+    <button class="aud-tab" onclick="switchLane('interp', this)"><span class="tab-icon">🤝</span>Interpreters</button>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main">
+
+  <!-- ══════════════════════════════════════════
+       LANE 1: DEAF & HARD OF HEARING
+  ══════════════════════════════════════════ -->
+  <div class="lane active" id="lane-deaf">
+
+    <div class="section-label">For Deaf & Hard of Hearing Individuals</div>
+    <div class="section-title">You have the right to effective communication.</div>
+    <p class="section-sub">Federal law requires that organizations provide qualified interpreters in most settings. Here's what the law says, what good access looks like, and how to advocate for yourself.</p>
+
+    <!-- Law cards -->
+    <div class="content-grid">
+      <div class="info-card">
+        <div class="law-tag">ADA Title II</div>
+        <div class="info-card-icon">🏛️</div>
+        <h3>Government & Public Entities</h3>
+        <p>State and local government agencies — courts, DMVs, public hospitals, police departments — must provide effective communication. The undue hardship bar here is extremely high.</p>
+      </div>
+      <div class="info-card">
+        <div class="law-tag">ADA Title III</div>
+        <div class="info-card-icon">🏥</div>
+        <h3>Private Businesses & Providers</h3>
+        <p>Private hospitals, clinics, law firms, hotels, and other places of public accommodation must provide effective communication. They may claim undue hardship, but only with documentation.</p>
+      </div>
+      <div class="info-card">
+        <div class="law-tag">Section 504</div>
+        <div class="info-card-icon">🎓</div>
+        <h3>Federally Funded Programs</h3>
+        <p>Any organization receiving federal funding — schools, universities, nonprofits, federally-funded clinics — has broad interpreter obligations under Section 504 of the Rehabilitation Act.</p>
+      </div>
+      <div class="info-card">
+        <div class="law-tag">IDEA</div>
+        <div class="info-card-icon">📚</div>
+        <h3>K–12 Education</h3>
+        <p>If interpreter services are part of your child's IEP or 504 plan, the school district is required to provide them. These services must be written into the plan and delivered as specified.</p>
+      </div>
+    </div>
+
+    <div class="highlight-box">
+      <p><strong>Key phrase to know:</strong> "Auxiliary aid and service" is the legal term for communication access. A qualified ASL interpreter is the gold standard — not a bilingual employee, not written notes, not VRI in a setting where it's inadequate.</p>
+    </div>
+
+    <!-- Comparison table -->
+    <div class="section-label" style="margin-top:2rem;">What good access looks like</div>
+    <div class="section-title" style="font-size:1.5rem;">Good access vs. a token gesture</div>
+    <div class="compare-wrap">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>✅ Effective Communication Access</th>
+            <th>❌ Usually Not Enough</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="check">✓</span>Qualified ASL interpreter on-site for your appointment</td>
+            <td><span class="x">✗</span>Asking a bilingual employee or family member to interpret</td>
+          </tr>
+          <tr>
+            <td><span class="check">✓</span>Interpreter matched to the setting (certified for medical or legal)</td>
+            <td><span class="x">✗</span>A community interpreter in a complex neurology or psychiatric consult</td>
+          </tr>
+          <tr>
+            <td><span class="check">✓</span>Team interpreting for assignments over 1.5–2 hours</td>
+            <td><span class="x">✗</span>One interpreter for a 4-hour surgery or all-day IEP meeting</td>
+          </tr>
+          <tr>
+            <td><span class="check">✓</span>On-site interpreter when VRI is inadequate (poor lighting, mobility limitations, trauma)</td>
+            <td><span class="x">✗</span>"We called a VRS number" or propped a tablet in the room</td>
+          </tr>
+          <tr>
+            <td><span class="check">✓</span>Advance notice honored; interpreter confirmed before you arrive</td>
+            <td><span class="x">✗</span>Called the day of; interpreter not found; appointment still proceeds</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Advocacy -->
+    <div class="section-divider"></div>
+    <div class="section-label">Self-Advocacy</div>
+    <div class="section-title" style="font-size:1.5rem;">How to advocate for yourself</div>
+    <ul class="policy-list">
+      <li>
+        <div class="policy-icon">✉️</div>
+        <div class="policy-text">
+          <h4>Request in writing</h4>
+          <p>Email creates a paper trail. Reference the specific law by name (e.g., "I am requesting a qualified ASL interpreter under ADA Title III and Section 504"). Keep a copy.</p>
+        </div>
+      </li>
+      <li>
+        <div class="policy-icon">📋</div>
+        <div class="policy-text">
+          <h4>Know your filing options if denied</h4>
+          <p>You can file a complaint with the U.S. Department of Education's Office for Civil Rights (OCR) for education settings, the DOJ for ADA violations, or the Washington State Human Rights Commission (HRC) under the WA Law Against Discrimination.</p>
+        </div>
+      </li>
+      <li>
+        <div class="policy-icon">🌐</div>
+        <div class="policy-text">
+          <h4>Washington State has additional protections</h4>
+          <p>The Washington Law Against Discrimination (RCW 49.60) provides broader state-level protections against disability discrimination, including communication access failures.</p>
+        </div>
+      </li>
+      <li>
+        <div class="policy-icon">👥</div>
+        <div class="policy-text">
+          <h4>You can request a specific interpreter or CDI</h4>
+          <p>You can express preferences. A qualified agency will honor them when possible. In complex settings — Deaf+, trauma, psychiatric — a CDI is often the appropriate choice, not optional.</p>
+        </div>
+      </li>
+    </ul>
+
+    <!-- FAQ -->
+    <div class="section-divider"></div>
+    <div class="section-label">Common Questions</div>
+    <div class="section-title" style="font-size:1.5rem;">Frequently asked</div>
+    <div class="faq-wrap">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Can my doctor's office refuse to provide an interpreter? <i class="faq-chevron">▾</i></button>
+        <div class="faq-a">Generally no. Private medical practices are places of public accommodation under ADA Title III and are required to provide effective communication. They may attempt to claim undue hardship, but this is a high standard. For federally-funded clinics (Medicaid, Medicare, FQHC), Section 504 also applies.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Can a family member interpret for me? <i class="faq-chevron">▾</i></button>
+        <div class="faq-a">In most formal settings, no. Medical and legal environments involve confidentiality, accuracy, and potential conflicts of interest that family members cannot ethically navigate. In emergencies, a companion may interpret temporarily — but this does not relieve the organization of its legal obligation to provide a qualified interpreter.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Does my employer have to pay for my interpreter? <i class="faq-chevron">▾</i></button>
+        <div class="faq-a">Generally yes. Under ADA Title I, employers with 15 or more employees must provide reasonable accommodations, which can include interpreter services. The cost falls on the employer, not the employee. Small employers may have more limited obligations, but cannot simply refuse.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">What if I prefer VRI over an in-person interpreter? <i class="faq-chevron">▾</i></button>
+        <div class="faq-a">You can express a preference and organizations should work with you. VRI is a legitimate option in many settings. However, VRI is not appropriate everywhere — in settings with poor lighting, where you may need to move around (surgery), or where the emotional weight of the situation demands direct presence. In those cases, on-site is the appropriate standard.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">What is a CDI and when do I need one? <i class="faq-chevron">▾</i></button>
+        <div class="faq-a">A CDI (Certified Deaf Interpreter) is a Deaf or Hard of Hearing professional with specialized training in interpreting. CDIs are particularly appropriate in mental health settings, legal proceedings, situations involving Deaf individuals with limited English or ASL, emergencies, and any setting where communication fluency and cultural mediation are critical. A CDI typically works alongside a hearing interpreter.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">My school said they can't afford an interpreter. Is that legal? <i class="faq-chevron">▾</i></button>
+        <div class="faq-a">Almost certainly not, if interpreter services are written into a student's IEP or 504 plan. School districts cannot deny legally mandated services on the basis of cost. If this is happening, document the refusal in writing and consider filing a complaint with the state's Office of Superintendent of Public Instruction (OSPI) or the U.S. Department of Education's OCR.</div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-block">
+      <div class="cta-text">
+        <h3>Need an interpreter? Refer your provider to us.</h3>
+        <p>ASL Connection works with organizations across Washington to arrange qualified interpreters. If a provider or employer is struggling to find coverage, we can help — and we understand your communication preferences.</p>
+      </div>
+      <div class="cta-actions">
+        <a href="index.html#request" class="cta-btn">Request an Interpreter</a>
+        <a href="index.html" class="cta-btn-ghost">Learn About Us</a>
+      </div>
+    </div>
+
+  </div><!-- /lane-deaf -->
+
+
+  <!-- ══════════════════════════════════════════
+       LANE 2: ORGANIZATIONS & EMPLOYERS
+  ══════════════════════════════════════════ -->
+  <div class="lane" id="lane-orgs">
+
+    <div class="section-label">For Organizations & Employers</div>
+    <div class="section-title">Your legal obligations — before something goes wrong.</div>
+    <p class="section-sub">Providing effective communication access isn't just the right thing to do — it's the law. Here's a plain-English breakdown of what's required, what the common mistakes are, and how to build a reliable access program.</p>
+
+    <!-- Law cards -->
+    <div class="content-grid">
+      <div class="info-card">
+        <div class="law-tag">ADA Title II</div>
+        <div class="info-card-icon">🏛️</div>
+        <h3>Government Entities</h3>
+        <p>State and local government agencies have the highest obligation. Courts, public hospitals, schools, and DMVs must provide effective communication. The undue hardship exception is nearly impossible to claim.</p>
+      </div>
+      <div class="info-card">
+        <div class="law-tag">ADA Title III</div>
+        <div class="info-card-icon">🏢</div>
+        <h3>Private Businesses</h3>
+        <p>Private clinics, law firms, hotels, and other places of public accommodation must provide effective communication. Undue hardship claims require genuine documentation of financial burden.</p>
+      </div>
+      <div class="info-card">
+        <div class="law-tag">Section 504</div>
+        <div class="info-card-icon">💼</div>
+        <h3>Federal Funding Recipients</h3>
+        <p>If your organization receives any federal funding — including Medicare/Medicaid reimbursements — Section 504 applies. This covers most hospitals, universities, and many nonprofits.</p>
+      </div>
+      <div class="info-card">
+        <div class="law-tag">IDEA</div>
+        <div class="info-card-icon">📚</div>
+        <h3>K–12 School Districts</h3>
+        <p>Interpreter services written into a student's IEP or 504 plan are legally mandated. Districts cannot claim cost as a reason to deny. Failure creates significant federal compliance exposure.</p>
+      </div>
+    </div>
+
+    <div class="highlight-box">
+      <p><strong>What "effective communication" actually means:</strong> The communication must be in the format the Deaf person uses — not just your preferred format. It must be as complete and timely as what hearing individuals receive. <strong>You are responsible for the cost, not the Deaf individual.</strong></p>
+    </div>
+
+    <!-- Mistakes -->
+    <div class="section-divider"></div>
+    <div class="section-label">Common Liability Exposures</div>
+    <div class="section-title" style="font-size:1.5rem;">Mistakes that create legal risk</div>
+    <ul class="policy-list">
+      <li>
+        <div class="policy-icon">🚫</div>
+        <div class="policy-text">
+          <h4>Using a bilingual employee or family member</h4>
+          <p>This is one of the most common violations. Bilingual employees and family members lack training in interpreting ethics, medical/legal terminology, and confidentiality obligations. This does not satisfy the "qualified interpreter" standard.</p>
+        </div>
+      </li>
+      <li>
+        <div class="policy-icon">📱</div>
+        <div class="policy-text">
+          <h4>Providing VRI where it's inadequate</h4>
+          <p>VRI is a legitimate tool — but not everywhere. Poor lighting, patient movement (surgery), emotional distress, or complex communication needs may render VRI insufficient. Propping a tablet in a room is not an adequate solution.</p>
+        </div>
+      </li>
+      <li>
+        <div class="policy-icon">⏰</div>
+        <div class="policy-text">
+          <h4>Unreasonable advance notice requirements</h4>
+          <p>You may request reasonable advance notice, but you cannot deny access because a Deaf patient showed up without 72 hours notice, particularly in urgent or emergent situations.</p>
+        </div>
+      </li>
+      <li>
+        <div class="policy-icon">📄</div>
+        <div class="policy-text">
+          <h4>Documenting nothing</h4>
+          <p>If you've made a good-faith effort to provide access, document it. If you've had to deny or substitute, document the reason. No documentation means no defense.</p>
+        </div>
+      </li>
+      <li>
+        <div class="policy-icon">❌</div>
+        <div class="policy-text">
+          <h4>Denying service because "we couldn't find an interpreter"</h4>
+          <p>The inability to locate an interpreter on short notice does not relieve you of your legal obligation. For non-emergent situations, reschedule. For emergent situations, explore all options and document your efforts. A standing agency relationship avoids this entirely.</p>
+        </div>
+      </li>
+    </ul>
+
+    <!-- Tax credit -->
+    <div class="section-divider"></div>
+    <div class="section-label">Financial Considerations</div>
+    <div class="section-title" style="font-size:1.5rem;">Tax credits & deductions you may not know about</div>
+    <div class="gold-box">
+      <p><strong>IRS Section 44 — Disabled Access Credit:</strong> Small businesses (gross receipts under $1M or fewer than 31 employees) can claim a tax credit of up to $5,000 per year for eligible accessibility expenditures, including interpreter services. This is a dollar-for-dollar credit, not a deduction.</p>
+    </div>
+    <div class="gold-box">
+      <p><strong>IRS Section 190 — Barrier Removal Deduction:</strong> Businesses of any size can deduct up to $15,000 per year in costs related to removing accessibility barriers, which can include interpreter coordination infrastructure.</p>
+    </div>
+    <div class="highlight-box">
+      <p>Washington State does not currently offer a separate state-level interpreter tax credit (as of 2026), but federal credits apply to Washington businesses. Consult your tax advisor to confirm eligibility for your situation.</p>
+    </div>
+
+    <!-- FAQ -->
+    <div class="section-divider"></div>
+    <div class="section-label">Common Questions</div>
+    <div class="section-title" style="font-size:1.5rem;">Frequently asked</div>
+    <div class="faq-wrap">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Do we need an interpreter for a short appointment? <i class="faq-chevron">▾</i></button>
+        <div class="faq-a">It depends on the complexity and importance of the interaction. A 5-minute check-in to confirm a follow-up appointment has different requirements than a 15-minute consultation about a cancer diagnosis. The more complex and consequential the communication, the higher the standard. When in doubt, provide the interpreter.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Can we use Zoom auto-captions instead of an interpreter? <i class="faq-chevron">▾</i></button>
+        <div class="faq-a">Automatic captions are not a substitute for a qualified ASL interpreter for a Deaf person whose primary language is ASL. Auto-captions address hearing, not language access. A Deaf individual who uses ASL as their primary language may have limited English literacy — captions do not resolve that barrier. The appropriate auxiliary aid depends on the individual's communication needs.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">What should we look for in an interpreter agency? <i class="faq-chevron">▾</i></button>
+        <div class="faq-a">Look for: RID-certified interpreters in your agency's network, demonstrated experience in your setting (medical, legal, educational), clear cancellation and backup policies, credentialing and background check processes, and a genuine understanding of Deaf culture and consumer preferences. A good agency will ask you questions about the assignment, not just confirm a time and send someone.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">What is a CDI and when do we need one? <i class="faq-chevron">▾</i></button>
+        <div class="faq-a">A CDI (Certified Deaf Interpreter) is a Deaf professional trained as an interpreter. Your agency should recommend one proactively for: mental health settings, legal proceedings, Deaf individuals with limited ASL or English fluency, trauma situations, and complex medical encounters. Providing a CDI when appropriate demonstrates a higher standard of care — and significantly reduces misunderstanding risk.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Are we liable if an interpreter makes an error? <i class="faq-chevron">▾</i></button>
+        <div class="faq-a">Your legal obligation is to provide a "qualified" interpreter. If an agency provides an under-qualified interpreter and a harm results, liability may extend to your organization for failing to vet the provider. This is one reason why working with a credentialed agency — one that verifies certifications and maintains compliance records — matters for your risk posture.</div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-block">
+      <div class="cta-text">
+        <h3>Build a reliable access program with us.</h3>
+        <p>ASL Connection works with organizations across Washington to provide credentialed interpreters, clear documentation, and responsive dispatch. Let's talk about what your organization needs.</p>
+      </div>
+      <div class="cta-actions">
+        <a href="index.html#request" class="cta-btn">Request an Interpreter</a>
+        <a href="mailto:info@aslconnection.com" class="cta-btn-ghost">Contact Us</a>
+      </div>
+    </div>
+
+  </div><!-- /lane-orgs -->
+
+
+  <!-- ══════════════════════════════════════════
+       LANE 3: INTERPRETERS
+  ══════════════════════════════════════════ -->
+  <div class="lane" id="lane-interp">
+
+    <div class="section-label">For Interpreters</div>
+    <div class="section-title">Know the landscape you're stepping into.</div>
+    <p class="section-sub">Every setting carries its own legal and ethical context. This is a field reference — not a lecture. You know the work. Here's how we frame the environment, and what we expect and offer as your agency partner.</p>
+
+    <!-- Settings -->
+    <div class="section-label" style="margin-bottom:.75rem;">Setting-Specific Context</div>
+    <div class="section-title" style="font-size:1.5rem;">Legal landscape by setting</div>
+    <div class="setting-grid">
+      <div class="setting-card">
+        <div class="s-icon">🏥</div>
+        <h4>Medical</h4>
+        <p>HIPAA applies. BAA obligations on the agency side. "Professional interpreter" standard — no summarizing, no filtering. Know when to flag for a CDI (Deaf+, trauma, psychiatric, EOL discussions).</p>
+      </div>
+      <div class="setting-card">
+        <div class="s-icon">⚖️</div>
+        <h4>Legal</h4>
+        <p>Court Interpreters Act in federal courts. Strict impartiality — you are not an advocate. Confidentiality extends to attorney-client privilege in some contexts. Know the distinction between attorney consultation and courtroom work.</p>
+      </div>
+      <div class="setting-card">
+        <div class="s-icon">🏫</div>
+        <h4>K–12 Education</h4>
+        <p>IDEA governs. The district has the obligation — you're filling it. IEP meeting role is distinct from classroom support. EIPA is the relevant credential standard. Document any concerns about adequacy of services.</p>
+      </div>
+      <div class="setting-card">
+        <div class="s-icon">🎓</div>
+        <h4>Post-Secondary</h4>
+        <p>ADA Title II and Section 504. Consumer autonomy is significantly higher here. Students direct their access, not the institution. CART is often a concurrent or alternative accommodation — know your role when both are present.</p>
+      </div>
+      <div class="setting-card">
+        <div class="s-icon">🧠</div>
+        <h4>Mental Health</h4>
+        <p>Heightened accuracy obligation — no paraphrasing, no emotional softening. Team interpreting is frequently warranted. Deaf-specific mental health competencies matter. Know your ethical limits and when to recommend a CDI.</p>
+      </div>
+      <div class="setting-card">
+        <div class="s-icon">📹</div>
+        <h4>VRI Assignments</h4>
+        <p>You're responsible for flagging when VRI conditions are inadequate — lighting, patient mobility, complexity. "The client accepted it" is not sufficient if you know it's not working. Advocate up the chain and document.</p>
+      </div>
+    </div>
+
+    <div class="highlight-box">
+      <p><strong>What the covered entity is responsible for — and what you're not:</strong> They book and pay. Their compliance failure predates your arrival. You are not the fixer for inadequate access infrastructure. Document conditions that concern you and route through the agency.</p>
+    </div>
+
+    <!-- RID CPC -->
+    <div class="section-divider"></div>
+    <div class="section-label">Professional Standards</div>
+    <div class="section-title" style="font-size:1.5rem;">RID Code of Professional Conduct — quick reference</div>
+    <ul class="policy-list">
+      <li>
+        <div class="policy-icon">🔒</div>
+        <div class="policy-text">
+          <h4>Confidentiality (Tenet 2)</h4>
+          <p>All assignment-related information is confidential. This extends beyond the room — what you hear in a medical consult, legal meeting, or IEP stays with you. Organizational entities may have their own confidentiality agreements layered on top.</p>
+        </div>
+      </li>
+      <li>
+        <div class="policy-icon">⚖️</div>
+        <div class="policy-text">
+          <h4>Impartiality (Tenet 3)</h4>
+          <p>You don't advocate for either party. You interpret. In settings where Deaf consumers are being underserved by the organization, your role is to interpret accurately — not to intervene in the access failure during the assignment. Route concerns before or after.</p>
+        </div>
+      </li>
+      <li>
+        <div class="policy-icon">🎯</div>
+        <div class="policy-text">
+          <h4>Professional Conduct & Discretion (Tenet 6)</h4>
+          <p>Behavior in and around assignments reflects on the profession and the agency. If conditions at an assignment are unsafe, unethical, or outside your competency, you have standing to decline or withdraw — but communicate through proper channels before it becomes a no-show.</p>
+        </div>
+      </li>
+      <li>
+        <div class="policy-icon">🤝</div>
+        <div class="policy-text">
+          <h4>Team Interpreting</h4>
+          <p>For assignments over 1.5–2 hours, team is the standard — not a request. If a client books a single interpreter for a multi-hour assignment without a team, you have grounds to flag this before accepting. ASL Connection will advocate with you.</p>
+        </div>
+      </li>
+    </ul>
+
+    <!-- Agency policies -->
+    <div class="section-divider"></div>
+    <div class="section-label">Working With ASL Connection</div>
+    <div class="section-title" style="font-size:1.5rem;">Our policies — your protections</div>
+    <div class="content-grid">
+      <div class="info-card">
+        <div class="info-card-icon">💵</div>
+        <h3>Minimum Pay Standards</h3>
+        <p><strong>$75/hr</strong> for non-certified interpreters<br><strong>$85/hr</strong> for certified interpreters<br><br>These are floors, not ceilings. Rates are set in your contract — never adjusted mid-contract without your agreement.</p>
+      </div>
+      <div class="info-card">
+        <div class="info-card-icon">📅</div>
+        <h3>Cancellation Protection</h3>
+        <p>Tiered cancellation pay based on notice given by the client. The closer to the assignment, the more you're protected. You will not show up empty-handed for a client cancellation.</p>
+      </div>
+      <div class="info-card">
+        <div class="info-card-icon">👥</div>
+        <h3>Team Abandonment Policy</h3>
+        <p>If your team partner no-shows and you complete the assignment alone, you receive <strong>2× your rate</strong> for the full duration. You took on a professional and physical burden — you're compensated for it.</p>
+      </div>
+      <div class="info-card">
+        <div class="info-card-icon">🔄</div>
+        <h3>Give-Back Without Penalty</h3>
+        <p>If an assignment is outside your competency, creates an ethical conflict, or you can't cover it — give it back through the portal. It's logged as a visible signal, not a punitive record.</p>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="section-divider"></div>
+    <div class="section-label">Common Questions</div>
+    <div class="section-title" style="font-size:1.5rem;">Frequently asked</div>
+    <div class="faq-wrap">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">What do I do if the client wants me to summarize instead of interpret? <i class="faq-chevron">▾</i></button>
+        <div class="faq-a">Decline politely and explain your role — you interpret, you don't summarize. If the client pushes back significantly, complete the assignment to the best of your ability per the CPC and flag the situation to the agency afterward. Do not interpret inaccurately to satisfy a client request.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Am I required to interpret in a setting I'm not trained for? <i class="faq-chevron">▾</i></button>
+        <div class="faq-a">No. Competency is a professional obligation. If you're assigned to a setting outside your training or experience, use the give-back process in the portal before the assignment. We'd rather find the right fit than put you or the consumer in a difficult position.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">What are my rights if conditions at an assignment are unsafe? <i class="faq-chevron">▾</i></button>
+        <div class="faq-a">Your safety is not negotiable. If physical conditions at an assignment pose a genuine risk, you have standing to withdraw. Document what you observed, notify ASL Connection immediately, and we will handle the client communication. Do not simply disappear — communicate through channels.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Can I request a rate adjustment mid-contract? <i class="faq-chevron">▾</i></button>
+        <div class="faq-a">Rate changes require a new contract — we don't amend active ones. This protects your professional autonomy. If you want to adjust your rate, the process is: notify us, a new contract is issued, there's a 24-hour freeze period, and it takes effect at the next midnight in your local time. Existing assignments honor your previous confirmed rate.</div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-block">
+      <div class="cta-text">
+        <h3>We built this agency with interpreters in mind.</h3>
+        <p>Not as a resource to be dispatched — as a partner. If you're looking for an agency that takes your professional autonomy, pay equity, and working conditions seriously, we'd like to talk.</p>
+      </div>
+      <div class="cta-actions">
+        <a href="portal.html" class="cta-btn">Join Our Network</a>
+        <a href="mailto:info@aslconnection.com" class="cta-btn-ghost">Ask Us a Question</a>
+      </div>
+    </div>
+
+  </div><!-- /lane-interp -->
+
+
+  <!-- ══════════════════════════════════════════
+       AI Q&A — SHARED ACROSS ALL LANES
+  ══════════════════════════════════════════ -->
+  <div class="section-divider" style="margin-top:4rem;"></div>
+  <div class="qa-section">
+    <div class="qa-label">AI-Assisted Guidance</div>
+    <div class="qa-title">Have a specific question?</div>
+    <div class="qa-sub">Ask about your rights, legal obligations, or communication access standards. Answers are for educational purposes only — not legal advice.</div>
+
+    <div class="qa-box">
+      <div class="qa-seeds" id="qa-seeds">
+        <button class="seed-btn" onclick="setSeed(this)">Can a hospital refuse to provide an interpreter?</button>
+        <button class="seed-btn" onclick="setSeed(this)">Do we need a CDI for mental health settings?</button>
+        <button class="seed-btn" onclick="setSeed(this)">What's the ADA Title II vs Title III difference?</button>
+        <button class="seed-btn" onclick="setSeed(this)">Can a family member interpret in a medical setting?</button>
+        <button class="seed-btn" onclick="setSeed(this)">What is the Section 44 tax credit?</button>
+        <button class="seed-btn" onclick="setSeed(this)">What does "qualified interpreter" mean legally?</button>
+      </div>
+      <div class="qa-input-row">
+        <textarea class="qa-input" id="qa-input" rows="2" placeholder="Ask a question about communication access rights..."></textarea>
+        <button class="qa-send" id="qa-send" onclick="askQuestion()">Ask →</button>
+      </div>
+      <div class="qa-loading" id="qa-loading">
+        <div class="qa-spinner"></div>
+        <span>Researching your question...</span>
+      </div>
+      <div class="qa-response" id="qa-response">
+        <div class="qa-response-label">Guidance</div>
+        <div class="qa-response-text" id="qa-response-text"></div>
+        <div class="qa-response-disclaimer">⚠️ This is educational information only and does not constitute legal advice. Laws vary by jurisdiction and are subject to change. For specific legal concerns, consult a qualified disability rights attorney or your organization's legal counsel.</div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /main -->
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 ASL Connection LLC &nbsp;·&nbsp; <a href="privacy.html">Privacy Policy</a> &nbsp;·&nbsp; <a href="terms.html">Terms of Service</a> &nbsp;·&nbsp; <a href="index.html">Home</a></p>
+  <p style="margin-top:.5rem;">The information on this page is for general educational purposes only and is not legal advice. ASL Connection LLC is an interpreter referral agency, not a law firm.</p>
+</footer>
+
+<script>
+// ── LANE SWITCHING ──
+function switchLane(lane, tab) {
+  document.querySelectorAll('.lane').forEach(l => l.classList.remove('active'));
+  document.querySelectorAll('.aud-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('lane-' + lane).classList.add('active');
+  tab.classList.add('active');
+  // Update seed questions
+  updateSeeds(lane);
+  // Scroll to top of content
+  document.querySelector('.main').scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+// ── FAQ TOGGLE ──
+function toggleFaq(btn) {
+  const item = btn.parentElement;
+  item.classList.toggle('open');
+}
+
+// ── SEED QUESTIONS BY LANE ──
+const seeds = {
+  deaf: [
+    'Can a hospital refuse to provide an interpreter?',
+    'Can a family member interpret in a medical setting?',
+    'What is a CDI and when do I need one?',
+    'My school said they can\'t afford an interpreter. Is that legal?',
+    'What does effective communication mean under the ADA?',
+    'How do I file a complaint if I\'m denied an interpreter?'
+  ],
+  orgs: [
+    'Do we need an interpreter for a short appointment?',
+    'Can we use auto-captions instead of an interpreter?',
+    'What is the Section 44 tax credit for interpreter services?',
+    'Are we liable if an interpreter makes an error?',
+    'Can a bilingual employee interpret for a Deaf patient?',
+    'What should we look for in an interpreter agency?'
+  ],
+  interp: [
+    'Do I need a CDI for mental health settings?',
+    'What do I do if a client asks me to summarize?',
+    'Am I required to interpret in a setting I\'m not trained for?',
+    'What are team interpreting standards?',
+    'What is the RID Code of Professional Conduct?',
+    'What is the difference between Title II and Title III assignments?'
+  ]
+};
+
+function updateSeeds(lane) {
+  const container = document.getElementById('qa-seeds');
+  container.innerHTML = '';
+  seeds[lane].forEach(s => {
+    const btn = document.createElement('button');
+    btn.className = 'seed-btn';
+    btn.textContent = s;
+    btn.onclick = function(){ setSeed(this); };
+    container.appendChild(btn);
+  });
+}
+
+function setSeed(btn) {
+  document.getElementById('qa-input').value = btn.textContent;
+  document.getElementById('qa-input').focus();
+}
+
+// ── AI Q&A ──
+async function askQuestion() {
+  const input = document.getElementById('qa-input');
+  const q = input.value.trim();
+  if (!q) return;
+
+  const sendBtn = document.getElementById('qa-send');
+  const loading = document.getElementById('qa-loading');
+  const response = document.getElementById('qa-response');
+
+  sendBtn.disabled = true;
+  loading.classList.add('visible');
+  response.classList.remove('visible');
+
+  // Determine active lane for context
+  const activeLane = document.querySelector('.lane.active').id.replace('lane-','');
+  const laneContext = {
+    deaf: 'The user is a Deaf or Hard of Hearing individual asking about their rights to communication access.',
+    orgs: 'The user is an organization, employer, or HR professional asking about their legal obligations to provide communication access for Deaf or Hard of Hearing individuals.',
+    interp: 'The user is an ASL interpreter asking about legal and ethical standards for their professional practice.'
+  }[activeLane];
+
+  const systemPrompt = `You are an expert on U.S. disability rights law and ASL interpreting standards, specifically focused on communication access for Deaf and Hard of Hearing individuals. You work for ASL Connection LLC, an ASL interpreter referral agency in Washington State.
+
+${laneContext}
+
+Provide clear, accurate, educational guidance. Reference specific laws by name when relevant (ADA Title I, II, III; Section 504; IDEA; RID Code of Professional Conduct; Washington Law Against Discrimination). Be specific and practical.
+
+Important guidelines:
+- Be direct and informative — this is educational content, not legal advice
+- Reference Washington State specifics when relevant
+- Keep responses to 2-4 concise paragraphs
+- Do not recommend specific attorneys or organizations by name
+- Always clarify when something requires professional legal consultation
+- Do not add your own disclaimer at the end — the UI handles that`;
+
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1000,
+        system: systemPrompt,
+        messages: [{ role: 'user', content: q }]
+      })
+    });
+
+    const data = await res.json();
+    const text = data.content?.[0]?.text || 'Unable to generate a response. Please try again.';
+
+    document.getElementById('qa-response-text').textContent = text;
+    response.classList.add('visible');
+  } catch (err) {
+    document.getElementById('qa-response-text').textContent = 'Something went wrong. Please try again in a moment.';
+    response.classList.add('visible');
+  } finally {
+    sendBtn.disabled = false;
+    loading.classList.remove('visible');
+  }
+}
+
+// Allow Enter to submit (Shift+Enter for newline)
+document.getElementById('qa-input').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter' && !e.shiftKey) {
+    e.preventDefault();
+    askQuestion();
+  }
+});
+</script>
+</body>
+</html>
